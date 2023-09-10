@@ -27,7 +27,7 @@
         </div>
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
-            <img class="h-8 w-auto" src="https://www.ringier.com/wp-content/themes/ringiercorporate/assets/images/favicon.ico" alt="Your Company">
+            <img class="h-8 w-auto" src="https://www.ringier.com/wp-content/themes/ringiercorporate/assets/images/ringier-logo.svg" alt="Your Company">
           </div>
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
@@ -40,7 +40,7 @@
           <div class="relative ml-3">
             <div>
               <a href="#" v-if="isLoggedIn" class="text-white">Welcome Back,{{currentUser.name}}!</a>&nbsp;
-              <a href="#" @click="$router.push({name:'CreatePropertyListing'})" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Create Listing</a>&nbsp;
+              <a href="#" @click="$router.push({name:'PropertyListingCard'})" class="bg-green-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Create Listing</a>&nbsp;
               <a v-if="isLoggedIn" href="#" @click="logout" class="bg-red-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Sign Out</a>&nbsp;
               <a v-if="!isLoggedIn" href="#" @click="$router.push({name:'SignIn'})" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Sign In</a>&nbsp;
               <a v-if='!isLoggedIn' href="#" @click="$router.push({name:'Register'})" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Sign Up</a>&nbsp;

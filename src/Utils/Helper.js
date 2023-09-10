@@ -1,4 +1,11 @@
+import {appAlgorithmKey} from "../environment";
+
 export default {
+    /**
+     *
+     * @param number
+     * @returns {string}
+     */
     formatNumber(number) {
         //add commas to numbers
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -38,6 +45,27 @@ export default {
         }
         else {
             // do nothing
+        }
+    },
+    /**
+     *
+     * @param value
+     * @returns {string}
+     */
+    encypt(value) {
+        return btoa(appAlgorithmKey+value)
+    },
+    /**
+     *
+     * @param value
+     * @returns {null|string}
+     */
+    decrypt(value) {
+        if (value && value.length>0) {
+            const code=atob(value);
+            return code.split("/").pop();
+        } else{
+            return null
         }
     }
 }

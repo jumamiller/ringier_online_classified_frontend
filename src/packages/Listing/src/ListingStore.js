@@ -6,6 +6,8 @@ export default {
     state:{
         properties:[],
         countries:[],
+        categories:[],
+        currencies:[],
         //
         loading:false,
         submitting:false
@@ -42,7 +44,30 @@ export default {
                 });
         },
         /**
-         * Get properties
+         * @description save property
+         * @param commit
+         * @param dispatch
+         * @param payload
+         */
+        saveProperty({commit,dispatch},payload) {
+            commit("MUTATE", {state: "submitting", data: true})
+            call('post', ListingConstants.CREATE_PROPERTY,payload)
+                .then(({data}) => {
+                    commit("MUTATE", {state: "submitting", data: false})
+                    if (data) {
+                        toast.success(data.data.message || 'You have successfully created a property')
+                        dispatch("getProperties",{})
+                    } else {
+                        toast.error(data.message);
+                    }
+                })
+                .catch(error => {
+                    commit("MUTATE", {state: "submitting", data: false})
+                    toast.error(error.response.data.message || 'Something went wrong.');
+                });
+        },
+        /**
+         * Get countries
          * @param commit
          * @param payload
          */
@@ -62,5 +87,47 @@ export default {
                     toast.error(error.response.data.message || 'Something went wrong.');
                 });
         },
-    }
+        /**
+         * Get categories
+         * @param commit
+         * @param payload
+         */
+        getCategories({commit},payload) {
+            commit("MUTATE", {state: "loading", data: true})
+            call('get', ListingConstants.CATEGORIES(payload))
+                .then(({data}) => {
+                    commit("MUTATE", {state: "loading", data: false})
+                    if (data) {
+                        commit("MUTATE", {state: "categories", data:data.data.data})
+                    } else {
+                        toast.error(data.message);
+                    }
+                })
+                .catch(error => {
+                    commit("MUTATE", {state: "loading", data: false})
+                    toast.error(error.response.data.message || 'Something went wrong.');
+                });
+        },
+        /**
+         * Get categories
+         * @param commit
+         * @param payload
+         */
+        getCurrencies({commit},payload) {
+            commit("MUTATE", {state: "loading", data: true})
+            call('get', ListingConstants.CURRENCIES(payload))
+                .then(({data}) => {
+                    commit("MUTATE", {state: "loading", data: false})
+                    if (data) {
+                        commit("MUTATE", {state: "currencies", data:data.data.data})
+                    } else {
+                        toast.error(data.message);
+                    }
+                })
+                .catch(error => {
+                    commit("MUTATE", {state: "loading", data: false})
+                    toast.error(error.response.data.message || 'Something went wrong.');
+                });
+        },
+    },
 }

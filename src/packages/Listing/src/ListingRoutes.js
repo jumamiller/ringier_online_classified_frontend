@@ -1,4 +1,5 @@
 import Listing from "./view/Listing.vue";
+import PropertyListingCard from "./components/PropertyListingCard.vue";
 
 export default [
     {
@@ -10,4 +11,14 @@ export default [
         },
         component: Listing,
     },
+    {
+        path: "/listings/card",
+        name: "PropertyListingCard",
+        meta: {
+            title: "Create Listing",
+            authRequired: true
+        },
+        component: PropertyListingCard,
+    },
+
 ]
