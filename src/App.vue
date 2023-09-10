@@ -1,8 +1,8 @@
 <script setup>
+import Header from "./packages/Layout/components/Header.vue";
 </script>
 
 <template>
-  <div>
-    <router-view/>
-  </div>
+  <Header/>
+  <router-view/>
 </template>
