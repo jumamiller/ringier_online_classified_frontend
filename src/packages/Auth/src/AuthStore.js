@@ -1,6 +1,7 @@
 import call from "../../../services/http";
 import {toast} from "vue3-toastify";
 import AuthConstants from "./AuthConstants.js";
+import AuthService from "../../../services/AuthService/index.js";
 
 export default {
     namespaced:true,
@@ -21,13 +22,14 @@ export default {
          * @param commit
          * @param payload
          */
-        login({commit}) {
+        login({commit},payload) {
             commit("MUTATE", {state: "submitting", data: true})
-            call('get', AuthConstants.LOGIN)
+            call('post', AuthConstants.LOGIN,payload)
                 .then(({data}) => {
                     commit("MUTATE", {state: "submitting", data: false})
                     if (data) {
                         toast.success(data.data.message || 'You have successfully logged in')
+                        AuthService.login(data.data.token,data.data.account)
                     } else {
                         toast.error(data.message);
                     }
@@ -44,7 +46,7 @@ export default {
          */
         register({commit}) {
             commit("MUTATE", {state: "submitting", data: true})
-            call('get', AuthConstants.REGISTER)
+            call('post', AuthConstants.REGISTER)
                 .then(({data}) => {
                     commit("MUTATE", {state: "submitting", data: false})
                     if (data) {

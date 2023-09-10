@@ -1,7 +1,3 @@
-<script setup>
-
-</script>
-
 <template>
   <nav class="bg-gray-800">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -43,9 +39,11 @@
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <div class="relative ml-3">
             <div>
-              <a href="#" @click="$router.push({name:'SignIn'})" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Sign In</a>&nbsp;
-              <a href="#" @click="$router.push({name:'Register'})" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Sign Up</a>&nbsp;
-              <a href="#" @click="$router.push({name:'CreatePropertyListing'})" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Create Listing</a>
+              <a href="#" v-if="isLoggedIn" class="text-white">Welcome Back,{{currentUser.name}}!</a>&nbsp;
+              <a href="#" @click="$router.push({name:'CreatePropertyListing'})" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Create Listing</a>&nbsp;
+              <a v-if="isLoggedIn" href="#" @click="logout" class="bg-red-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Sign Out</a>&nbsp;
+              <a v-if="!isLoggedIn" href="#" @click="$router.push({name:'SignIn'})" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Sign In</a>&nbsp;
+              <a v-if='!isLoggedIn' href="#" @click="$router.push({name:'Register'})" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Sign Up</a>&nbsp;
             </div>
           </div>
         </div>
@@ -61,6 +59,30 @@
     </div>
   </nav>
 </template>
+
+<script>
+import AuthService from "../../../services/AuthService";
+
+export default {
+  name:"Header",
+  data:()=>({
+
+  }),
+  computed:{
+    isLoggedIn(){
+      return AuthService.check()
+    },
+    currentUser(){
+      return AuthService.user
+    },
+  },
+  methods:{
+    logout(){
+      return AuthService.logout()
+    }
+  }
+}
+</script>
 
 <style scoped>
 
