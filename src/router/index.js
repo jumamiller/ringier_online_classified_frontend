@@ -1,8 +1,10 @@
 import { createWebHistory, createRouter } from "vue-router";
-import AuthService from "scaling-garbanzo/src/access-control/AuthService";
-
+import AuthService from "../packages/Auth/AuthService";
+import routes from "./routes.js";
+//
 const router = createRouter({
     history: createWebHistory(),
+    routes,
     mode: 'history',
     scrollBehavior(to, from, savedPosition) {
         if (savedPosition) {

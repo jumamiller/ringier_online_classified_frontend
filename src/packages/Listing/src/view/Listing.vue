@@ -3,7 +3,9 @@
 </script>
 
 <template>
-
+  <div>
+    Landing Page
+  </div>
 </template>
 
 <style scoped>

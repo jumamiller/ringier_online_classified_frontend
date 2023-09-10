@@ -3,8 +3,10 @@ import './style.css'
 import App from './App.vue'
 import store from './store'
 import router from "./router/index.js";
+import listing from "./packages/Listing";//landing page
 
 createApp(App)
+    .use(listing,{router,store})
     .use(router)
     .use(store)
     .mount('#app')
