@@ -5,6 +5,7 @@ export default {
     namespaced:true,
     state:{
         properties:[],
+        countries:[],
         //
         loading:false,
         submitting:false
@@ -31,6 +32,27 @@ export default {
                     if (data) {
                         commit("MUTATE", {state: "properties", data:data.data.data})
                         commit("MUTATE", {state: "pagination", data:data.data})
+                    } else {
+                        toast.error(data.message);
+                    }
+                })
+                .catch(error => {
+                    commit("MUTATE", {state: "loading", data: false})
+                    toast.error(error.response.data.message || 'Something went wrong.');
+                });
+        },
+        /**
+         * Get properties
+         * @param commit
+         * @param payload
+         */
+        getCountries({commit},payload) {
+            commit("MUTATE", {state: "loading", data: true})
+            call('get', ListingConstants.COUNTRIES(payload))
+                .then(({data}) => {
+                    commit("MUTATE", {state: "loading", data: false})
+                    if (data) {
+                        commit("MUTATE", {state: "countries", data:data.data.data})
                     } else {
                         toast.error(data.message);
                     }

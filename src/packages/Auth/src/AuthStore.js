@@ -44,13 +44,17 @@ export default {
          * @param commit
          * @param payload
          */
-        register({commit}) {
+        register({commit},payload) {
             commit("MUTATE", {state: "submitting", data: true})
-            call('post', AuthConstants.REGISTER)
+            call('post', AuthConstants.REGISTER,payload)
                 .then(({data}) => {
                     commit("MUTATE", {state: "submitting", data: false})
                     if (data) {
                         toast.success(data.data.message || 'You have successfully created an account')
+                        //redirect to login
+                        setTimeout(()=>{
+                            window.location.href="/auth/sign-in"
+                        },3000)
                     } else {
                         toast.error(data.message);
                     }
