@@ -24,7 +24,6 @@ export default {
          * @param payload
          */
         getProperties({commit},payload) {
-            console.log(payload)
             commit("MUTATE", {state: "loading", data: true})
             call('get', ListingConstants.PROPERTY_LISTINGS(payload))
                 .then(({data}) => {

@@ -1,4 +1,15 @@
 export default {
+    formatNumber(number) {
+        //add commas to numbers
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+    /**
+     *
+     * @param params
+     * @param exemptedKeys
+     * @returns {string}
+     * @constructor
+     */
     URLQueryBuilder(params, exemptedKeys = []) {
         //add except
         if (exemptedKeys.length > 0) {
