@@ -1,4 +1,4 @@
-import {appName} from "../../../environment/index.js";
+import {appName} from "../../environment/index.js";
 
 class AuthService {
     constructor() {

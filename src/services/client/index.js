@@ -1,4 +1,4 @@
-import AuthService from "../../packages/Auth/AuthService";
+import AuthService from "../AuthService";
 import {apiBaseUrl} from "../../environment/index.js";
 import axios from "axios";
 

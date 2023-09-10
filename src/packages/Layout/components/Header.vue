@@ -36,16 +36,16 @@
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Ringier Properties</a>
+              <a href="/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Ringier Properties</a>
             </div>
           </div>
         </div>
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <div class="relative ml-3">
             <div>
-              <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Sign In</a>&nbsp;
-              <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Sign Up</a>&nbsp;
-              <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Create Listing</a>
+              <a href="#" @click="$router.push({name:'SignIn'})" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Sign In</a>&nbsp;
+              <a href="#" @click="$router.push({name:'Register'})" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Sign Up</a>&nbsp;
+              <a href="#" @click="$router.push({name:'CreatePropertyListing'})" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Create Listing</a>
             </div>
           </div>
         </div>
