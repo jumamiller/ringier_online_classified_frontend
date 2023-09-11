@@ -36,7 +36,7 @@ export default [
         name: "PropertyDetailsCard",
         meta: {
             title: "Property Details",
-            authRequired: true
+            authRequired: false
         },
         component: PropertyDetails,
     },

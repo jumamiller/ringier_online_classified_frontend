@@ -31,7 +31,7 @@
       <p class="mt-10 text-center text-sm text-gray-500">
         Do not have an account?
         {{ ' ' }}
-        <a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Create an Account</a>
+        <a href="#" @click="$router.push({name:'Register'})" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Create an Account</a>
       </p>
     </div>
   </div>
