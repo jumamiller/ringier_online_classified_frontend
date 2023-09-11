@@ -1,4 +1,5 @@
 import Helper from "../../../../Utils/Helper.js";
+import _ from "lodash";
 
 export const ListingMixin={
     computed:{
@@ -13,6 +14,9 @@ export const ListingMixin={
         },
         categories(){
             return this.$store.getters['PropertyListing/PROPERTY_GETTER']('categories')
+        },
+        properties(){
+            return this.$store.getters['PropertyListing/PROPERTY_GETTER']('properties')
         },
         countries(){
             return this.$store.getters['PropertyListing/PROPERTY_GETTER']("countries")
@@ -34,6 +38,9 @@ export const ListingMixin={
         },
         property(){
             return this.$store.getters['PropertyListing/PROPERTY_GETTER']("property")
+        },
+        pagination(){
+            return this.$store.getters['PropertyListing/PROPERTY_GETTER']("pagination")
         }
     },
     methods:{
@@ -66,6 +73,14 @@ export const ListingMixin={
         sendInquiry(){
             this.formData.property_id=this.property.id
             this.$store.dispatch("PropertyListing/sendInquiry",this.formData)
-        }
+        },
+        loadMore(){
+            this.$store.dispatch("PropertyListing/getProperties", {
+                page:this.pagination.current_page+1,
+            })
+        },
+        debouncedSearch: _.debounce(function () {
+            this.$store.dispatch('PropertyListing/getProperties',{per_page:100,page:1,q:this.query})
+        }, 500),
     }
 }
