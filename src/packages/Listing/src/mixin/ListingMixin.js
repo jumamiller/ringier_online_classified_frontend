@@ -2,8 +2,14 @@ import Helper from "../../../../Utils/Helper.js";
 
 export const ListingMixin={
     computed:{
+        loading(){
+            return this.$store.getters['PropertyListing/PROPERTY_GETTER']("loading")
+        },
         submitting(){
             return this.$store.getters['PropertyListing/PROPERTY_GETTER']("submitting")
+        },
+        inquirySent(){
+            return this.$store.getters['PropertyListing/PROPERTY_GETTER']("inquirySent")
         },
         categories(){
             return this.$store.getters['PropertyListing/PROPERTY_GETTER']('categories')
@@ -56,6 +62,10 @@ export const ListingMixin={
                 id:image.id,
                 slug:this.property.slug,
             })
+        },
+        sendInquiry(){
+            this.formData.property_id=this.property.id
+            this.$store.dispatch("PropertyListing/sendInquiry",this.formData)
         }
     }
 }

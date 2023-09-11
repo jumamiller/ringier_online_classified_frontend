@@ -1,6 +1,7 @@
 import Listing from "./view/Listing.vue";
 import PropertyListingCard from "./components/PropertyListingCard.vue";
 import PropertyImageUpload from "./components/PropertyImageUpload.vue";
+import PropertyDetails from "./components/PropertyDetails.vue";
 
 export default [
     {
@@ -29,6 +30,15 @@ export default [
             authRequired: true
         },
         component: PropertyImageUpload,
+    },
+    {
+        path: "/listings/card/details/:code",
+        name: "PropertyDetailsCard",
+        meta: {
+            title: "Property Details",
+            authRequired: true
+        },
+        component: PropertyDetails,
     },
 
 ]

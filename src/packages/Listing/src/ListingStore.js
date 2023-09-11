@@ -1,7 +1,6 @@
 import ListingConstants from "./ListingConstants.js";
 import call from "../../../services/http";
 import {toast} from "vue3-toastify";
-import Helper from "../../../Utils/Helper.js";
 import router from "../../../router/index.js";
 export default {
     namespaced:true,
@@ -13,7 +12,8 @@ export default {
         currencies:[],
         //
         loading:false,
-        submitting:false
+        submitting:false,
+        inquirySent:false,
     },
     getters: {
         PROPERTY_GETTER: state => setup => state[setup],
@@ -202,5 +202,22 @@ export default {
                     toast.error(error.response.data.message || 'Something went wrong.');
                 });
         },
+        sendInquiry({commit},payload) {
+            commit("MUTATE", {state: "submitting", data: true})
+            call('post', ListingConstants.SEND_INQUIRY,payload)
+                .then(({data}) => {
+                    commit("MUTATE", {state: "submitting", data: false})
+                    if (data.success) {
+                        commit("MUTATE", {state: "inquirySent", data: true})
+                        toast.success(data.data.message || 'You have successfully sent an inquiry')
+                    } else {
+                        toast.error(data.message);
+                    }
+                })
+                .catch(error => {
+                    commit("MUTATE", {state: "submitting", data: false})
+                    toast.error(error.response.data.message || 'Something went wrong.');
+                });
+        }
     },
 }

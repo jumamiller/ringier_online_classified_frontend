@@ -61,7 +61,7 @@ export default {
       <h2 class="text-2xl font-bold tracking-tight text-gray-900">Featured Properties</h2>
 
       <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-        <div class="group relative"  v-bind:key="property.id"  v-for="property of properties">
+        <div @click="$router.push({name:'PropertyDetailsCard',params:{code:property.slug}})" class="group relative"  v-bind:key="property.id"  v-for="property of properties">
           <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
             <img :src="property?.images[0]?.image_path" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
           </div>

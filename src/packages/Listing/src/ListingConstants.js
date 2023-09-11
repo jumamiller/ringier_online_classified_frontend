@@ -7,4 +7,5 @@ export default {
     CATEGORIES:(payload)=>`admin/setting/categories?${Helper.URLQueryBuilder(payload)}`,
     UPLOAD_IMAGES:`property/files`,
     CURRENCIES:(payload)=>`admin/setting/currencies?${Helper.URLQueryBuilder(payload)}`,
+    SEND_INQUIRY:`property/inquiries`,
 }
