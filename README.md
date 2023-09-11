@@ -9,7 +9,6 @@
 - vue 3.3.4
 - vue-router 4.2.4
 
-
 #### Install dependencies
 ```bash
 pnpm install
@@ -26,3 +25,4 @@ VITE_APP_ALGORITHM_KEY=yout_app_algorithm_key //not used yet
 ```bash
 pnpm run dev #// yarn run dev or npm run dev
 ```
+- NOTE: a dist file has been included in the repo for convenience
