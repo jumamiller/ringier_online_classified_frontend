@@ -1,7 +1,28 @@
-# Vue 3 + Vite
+## Welcome to Ringier Property Listing Frontend
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+### Installation
+#### Requirements
+- NodeJS 20.5.1
+- NPM 9.8.0
+- pnpm 8.7.1 // yarn or npm can be used as well
+- vite 8.7.5
+- vue 3.3.4
+- vue-router 4.2.4
 
-## Recommended IDE Setup
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+#### Install dependencies
+```bash
+pnpm install
+```
+
+#### Add .env file
+```bash
+VITE_API_URL=your_api_url
+VITE_APP_NAME=your_app_name
+VITE_APP_ALGORITHM_KEY=yout_app_algorithm_key //not used yet
+```
+
+#### Run development server
+```bash
+pnpm run dev #// yarn run dev or npm run dev
+```
