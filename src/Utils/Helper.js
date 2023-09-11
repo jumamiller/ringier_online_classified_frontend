@@ -52,7 +52,7 @@ export default {
      * @param value
      * @returns {string}
      */
-    encypt(value) {
+    encrypt(value) {
         return btoa(appAlgorithmKey+value)
     },
     /**

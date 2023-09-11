@@ -21,7 +21,7 @@ router.beforeEach(async (to, from, next) => {
     const isLoggedIn = await AuthService.check();
     // If the route requires authentication and the user is not logged in, redirect to the login page
     if (requiresAuth && !isLoggedIn) {
-        next({ name: "login", query: { redirect: to.fullPath }});
+        next({ name: "SignIn", query: { redirect: to.fullPath }});
     } else {
         // If the user is already logged in or the route does not require authentication, proceed with the navigation
         next();

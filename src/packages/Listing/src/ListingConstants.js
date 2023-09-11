@@ -5,6 +5,6 @@ export default {
     CREATE_PROPERTY:`property/listings`,
     COUNTRIES:(payload) => `admin/setting/countries?${Helper.URLQueryBuilder(payload)}`,
     CATEGORIES:(payload)=>`admin/setting/categories?${Helper.URLQueryBuilder(payload)}`,
-    SUB_CATEGORIES:(payload)=>`admin/setting/sub-categories?${Helper.URLQueryBuilder(payload)}`,
+    UPLOAD_IMAGES:`property/files`,
     CURRENCIES:(payload)=>`admin/setting/currencies?${Helper.URLQueryBuilder(payload)}`,
 }

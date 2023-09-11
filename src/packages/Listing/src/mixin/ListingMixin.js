@@ -1,3 +1,5 @@
+import Helper from "../../../../Utils/Helper.js";
+
 export const ListingMixin={
     computed:{
         submitting(){
@@ -23,11 +25,27 @@ export const ListingMixin={
                     name:"RENT",
                 },
             ]
+        },
+        property(){
+            return this.$store.getters['PropertyListing/PROPERTY_GETTER']("property")
         }
     },
     methods:{
+        /**
+         * Save
+         */
         save() {
             this.$store.dispatch("PropertyListing/saveProperty",this.formData)
-        }
+        },
+        /**
+         * Upload base64 image
+         * @param files
+         */
+        async uploadBase64Image(files) {
+            this.formData.image = await Helper.uploadBase64Image(files[0])
+            this.formData.property_id=this.property.id
+            this.formData.slug=this.property.slug
+            this.$store.dispatch("PropertyListing/savePropertyImage",this.formData)
+        },
     }
 }
