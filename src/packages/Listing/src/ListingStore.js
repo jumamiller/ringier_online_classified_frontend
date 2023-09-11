@@ -117,6 +117,29 @@ export default {
                 });
         },
         /**
+         * @description save image
+         * @param commit
+         * @param dispatch
+         * @param payload
+         */
+        removePropertyImage({commit,dispatch},payload) {
+            commit("MUTATE", {state: "submitting", data: true})
+            call('delete', ListingConstants.UPLOAD_IMAGES+`/${payload.id}`)
+                .then(({data}) => {
+                    commit("MUTATE", {state: "submitting", data: false})
+                    if (data) {
+                        toast.success(data.data.message || 'You have successfully removed image')
+                        dispatch("getProperty",{slug:payload.slug})
+                    } else {
+                        toast.error(data.message);
+                    }
+                })
+                .catch(error => {
+                    commit("MUTATE", {state: "submitting", data: false})
+                    toast.error(error.response.data.message || 'Something went wrong.');
+                });
+        },
+        /**
          * Get countries
          * @param commit
          * @param payload

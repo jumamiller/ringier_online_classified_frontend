@@ -47,5 +47,15 @@ export const ListingMixin={
             this.formData.slug=this.property.slug
             this.$store.dispatch("PropertyListing/savePropertyImage",this.formData)
         },
+        /**
+         * Remove image
+         * @param image
+         */
+        removePropertyImage(image){
+            this.$store.dispatch("PropertyListing/removePropertyImage", {
+                id:image.id,
+                slug:this.property.slug,
+            })
+        }
     }
 }
