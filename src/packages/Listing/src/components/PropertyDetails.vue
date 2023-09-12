@@ -30,7 +30,7 @@
         <div class="" v-if="loading">Loading...</div>
         <div class="group relative mt-4"  v-bind:key="item.id"  v-for="item of property.images">
           <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-            <img :src="item?.image_path" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+            <img :src="item?.image_path" alt="Property image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
           </div>
         </div>
       </div>
